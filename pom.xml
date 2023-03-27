@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>dispatcher</module>
+        <module>common-rmq</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -33,6 +34,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
