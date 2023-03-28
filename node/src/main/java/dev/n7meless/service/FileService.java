@@ -6,6 +6,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 
 public interface FileService {
     AppDocument processDoc(Message externalMessage);
+
     AppPhoto processPhoto(Message externalMessage);
 
 }

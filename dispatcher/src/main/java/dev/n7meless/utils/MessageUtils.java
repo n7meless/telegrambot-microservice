@@ -3,9 +3,10 @@ package dev.n7meless.utils;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+
 @Component
 public class MessageUtils {
-    public SendMessage generateSendMessageWIthText(Update update, String text){
+    public SendMessage generateSendMessageWIthText(Update update, String text) {
         var message = update.getMessage();
         var sendMessage = new SendMessage();
         sendMessage.setChatId(message.getChatId().toString());

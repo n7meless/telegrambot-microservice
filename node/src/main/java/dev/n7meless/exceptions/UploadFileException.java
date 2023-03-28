@@ -1,7 +1,7 @@
 package dev.n7meless.exceptions;
 
-public class UploadFileException extends RuntimeException{
-    public UploadFileException(String message, Throwable causer){
+public class UploadFileException extends RuntimeException {
+    public UploadFileException(String message, Throwable causer) {
         super(message, causer);
     }
 

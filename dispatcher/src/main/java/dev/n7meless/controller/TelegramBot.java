@@ -19,11 +19,12 @@ public class TelegramBot extends TelegramLongPollingBot {
     private String botToken;
     private UpdateController updateController;
 
-    public TelegramBot(UpdateController updateController){
+    public TelegramBot(UpdateController updateController) {
         this.updateController = updateController;
     }
+
     @PostConstruct
-    public void init(){
+    public void init() {
         updateController.registerBot(this);
     }
 
@@ -42,8 +43,8 @@ public class TelegramBot extends TelegramLongPollingBot {
         return botName;
     }
 
-    public void sendAnswerMessage(SendMessage message){
-        if (message != null){
+    public void sendAnswerMessage(SendMessage message) {
+        if (message != null) {
             try {
                 execute(message);
             } catch (TelegramApiException e) {

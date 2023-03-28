@@ -1,11 +1,11 @@
 package dev.n7meless.service.impl;
 
 import dev.n7meless.dao.AppUserDAO;
+import dev.n7meless.dao.RawDataDAO;
 import dev.n7meless.entity.AppDocument;
 import dev.n7meless.entity.AppPhoto;
 import dev.n7meless.entity.AppUser;
 import dev.n7meless.entity.RawData;
-import dev.n7meless.dao.RawDataDAO;
 import dev.n7meless.exceptions.UploadFileException;
 import dev.n7meless.service.FileService;
 import dev.n7meless.service.MainService;
@@ -61,6 +61,7 @@ public class MainServiceImpl implements MainService {
         var chatId = update.getMessage().getChatId();
         sendAnswer(output, chatId);
     }
+
     @Override
     public void processDocMessage(Update update) {
         saveRawData(update);
@@ -119,6 +120,7 @@ public class MainServiceImpl implements MainService {
         }
         return false;
     }
+
     private void sendAnswer(String output, Long chatId) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
@@ -139,16 +141,19 @@ public class MainServiceImpl implements MainService {
             return "Неизвестная команда! Чтобы посмотреть список доступных команд введите /help";
         }
     }
+
     private String help() {
         return "Список доступных команд:\n"
                 + "/cancel - отмена выполнения текущей команды;\n"
                 + "/registration - регистрация пользователя.";
     }
+
     private String cancelProcess(AppUser appUser) {
         appUser.setState(BASIC_STATE);
         appUserDAO.save(appUser);
         return "Команда отменена!";
     }
+
     private AppUser findOrSaveAppUser(Update update) {
         User telegramUser = update.getMessage().getFrom();
         AppUser persistentAppUser = appUserDAO.findAppUserByTelegramUserId(telegramUser.getId());
@@ -166,6 +171,7 @@ public class MainServiceImpl implements MainService {
         }
         return persistentAppUser;
     }
+
     private void saveRawData(Update update) {
         RawData rawData = RawData.builder()
                 .event(update)

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import static dev.n7meless.RabbitQueue.ANSWER_MESSAGE;
+
 @Service
 public class AnswerConsumerImpl implements AnswerConsumer {
     private final UpdateController updateController;
