@@ -10,6 +10,7 @@ import dev.n7meless.exceptions.UploadFileException;
 import dev.n7meless.service.FileService;
 import dev.n7meless.service.MainService;
 import dev.n7meless.service.ProducerService;
+import dev.n7meless.service.enums.LinkType;
 import dev.n7meless.service.enums.ServiceCommand;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Service;
@@ -73,9 +74,10 @@ public class MainServiceImpl implements MainService {
 
         try {
             AppDocument doc = fileService.processDoc(update.getMessage());
+            String link = fileService.generateLink(doc.getId(), LinkType.GET_DOC);
             //TODO Добавить генерацию ссылки для скачивания документа
             var answer = "Документ успешно загружен! "
-                    + "Ссылка для скачивания: http://test.ru/get-doc/777";
+                    + "Ссылка для скачивания: " + link;
             sendAnswer(answer, chatId);
         } catch (UploadFileException ex) {
             log.error(ex);
@@ -95,9 +97,10 @@ public class MainServiceImpl implements MainService {
 
         try {
             AppPhoto photo = fileService.processPhoto(update.getMessage());
+            String link = fileService.generateLink(photo.getId(), LinkType.GET_PHOTO);
             //TODO добавить генерацию ссылки для скачивания фото
             var answer = "Фото успешно загружено! "
-                    + "Ссылка для скачивания: http://test.ru/get-photo/777";
+                    + "Ссылка для скачивания: " + link;
             sendAnswer(answer, chatId);
         } catch (UploadFileException ex) {
             log.error(ex);
