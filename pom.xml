@@ -11,6 +11,8 @@
     <modules>
         <module>dispatcher</module>
         <module>common-rmq</module>
+        <module>node</module>
+        <module>common-jpa</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -21,6 +23,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <telegrambot.starter.version>6.5.0</telegrambot.starter.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
