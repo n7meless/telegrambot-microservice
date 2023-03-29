@@ -16,7 +16,7 @@ import static dev.n7meless.RabbitQueue.*;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UpdateController {
+public class UpdateProcessor {
     TelegramBot telegramBot;
     final MessageUtils messageUtils;
     final UpdateProducer updateProducer;

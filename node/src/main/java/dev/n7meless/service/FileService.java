@@ -9,6 +9,7 @@ public interface FileService {
     AppDocument processDoc(Message externalMessage);
 
     AppPhoto processPhoto(Message externalMessage);
+
     String generateLink(Long docId, LinkType linkType);
 
 }
